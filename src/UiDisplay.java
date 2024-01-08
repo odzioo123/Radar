@@ -1,18 +1,17 @@
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 
 
 public class UiDisplay extends JPanel{
-    private ArrayList<Entity> entitiesList;
+    private EntityManager entityManager;
     private Image image;
 
-    public UiDisplay(int width, int height, Image image, ArrayList<Entity> entitiesList) {
+    public UiDisplay(int width, int height, Image image, EntityManager entityManager) {
         setPreferredSize(new Dimension(width, height));
-        this.entitiesList = entitiesList;
+        this.entityManager = entityManager;
         this.image = image;
     }
 
@@ -27,8 +26,9 @@ public class UiDisplay extends JPanel{
         graphics.drawImage(image, 0, 0, null);
         graphics.setColor(Color.BLUE);
 
-        for (Entity entity: entitiesList)
+        for (Entity entity: entityManager.getEntitiesList())
         {
+            System.out.println(entityManager.getEntitiesList().size());
             Ufo previousUfo = null;
             for (Ufo ufo: entity.getEntityList())
             {

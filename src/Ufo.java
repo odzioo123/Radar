@@ -47,7 +47,7 @@ public class Ufo {
 
     public double calculateG(Ufo ufo)
     {
-        return Math.exp(-Math.pow(ufo.getCenter()[0] - this.center[0], 2) / (20 * Math.pow(this.getDeviation()[0], 2))) * Math.exp(-Math.pow(ufo.getCenter()[1] - this.center[1], 2) / (20 * Math.pow(this.getDeviation()[1], 2)));
+        return Math.exp(-Math.pow(ufo.getCenter()[0] - this.center[0], 2) / (10 * Math.pow(this.getDeviation()[0], 2))) * Math.exp(-Math.pow(ufo.getCenter()[1] - this.center[1], 2) / (10 * Math.pow(this.getDeviation()[1], 2)));
     }
 
 

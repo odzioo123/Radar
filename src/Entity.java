@@ -11,11 +11,16 @@ public class Entity {
     public Entity() {
         this.entityList = new ArrayList<>();
     }
-    public Entity(Ufo ufo) {
+    public Entity(Ufo ufo)
+    {
         this.entityList = new ArrayList<>();
         entityList.add(ufo);
     }
 
+    public Ufo getFirst()
+    {
+        return entityList.get(0);
+    }
     public List<Ufo> getEntityList() {
         return entityList;
     }

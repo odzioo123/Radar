@@ -25,7 +25,7 @@ public class Ui {
                 uiLogic.getParser().getBitmap().length,
                 uiLogic.getParser().getBitmap()[0].length,
                 ImageIO.read(files[0]),
-                (ArrayList<Entity>) uiLogic.getEntityManager().getEntitiesList()
+                uiLogic.getEntityManager()
         );
     }
 
@@ -42,6 +42,16 @@ public class Ui {
         display.repaint();
         for (int i = 1; i < files.length; i++)
         {
+
+            try
+            {
+                Thread.sleep(50);
+            } catch (InterruptedException e)
+            {
+                throw new RuntimeException(e);
+            }
+
+
             uiLogic.loadImage(files[i]);
             display.setImage(ImageIO.read(files[i]));
             display.repaint();
