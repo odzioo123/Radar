@@ -1,8 +1,6 @@
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-
 
 
 public class UiDisplay extends JPanel{
@@ -26,16 +24,19 @@ public class UiDisplay extends JPanel{
         graphics.drawImage(image, 0, 0, null);
         graphics.setColor(Color.BLUE);
 
+        Graphics2D graphics2 = (Graphics2D) graphics;
+        graphics2.setStroke(new BasicStroke(3));
+
         for (Entity entity: entityManager.getEntitiesList())
         {
-            System.out.println(entityManager.getEntitiesList().size());
+//            System.out.println(entityManager.getEntitiesList().size());
             Ufo previousUfo = null;
             for (Ufo ufo: entity.getEntityList())
             {
                 graphics.setColor(Color.BLUE);
                 if (previousUfo != null)
                 {
-                    graphics.drawLine((int) previousUfo.getCenter()[0], (int) previousUfo.getCenter()[1], (int) ufo.getCenter()[0], (int) ufo.getCenter()[1]);
+                    graphics2.drawLine((int) previousUfo.getCenter()[0], (int) previousUfo.getCenter()[1], (int) ufo.getCenter()[0], (int) ufo.getCenter()[1]);
                 }
                 previousUfo = ufo;
             }
