@@ -3,13 +3,11 @@ import java.sql.Timestamp;
 
 
 public class Ufo {
-    private List<int[]> area;
     private double[] center;
     private double[] deviation;
     private Timestamp time;
 
-    public Ufo(List<int[]> area, double[] center, double[] deviation, Timestamp time) {
-        this.area = area;
+    public Ufo(double[] center, double[] deviation, Timestamp time) {
         this.center = center;
         this.deviation = deviation;
         this.time = time;
@@ -21,14 +19,6 @@ public class Ufo {
 
     public void setTime(Timestamp time) {
         this.time = time;
-    }
-
-    public List<int[]> getArea() {
-        return area;
-    }
-
-    public void setArea(List<int[]> area) {
-        this.area = area;
     }
 
     public double[] getCenter() {
@@ -49,14 +39,16 @@ public class Ufo {
 
     public void printUfo()
     {
-        System.out.print("Area: ");
-        for (var point : this.area)
-        {
-            System.out.print("x:" + point[0] + " y:" + point[1] + "  ");
-        }
         System.out.println();
         System.out.println("Time: " + this.time);
         System.out.println("Center: " + this.center[0] + " " + this.center[1]);
         System.out.println("Deviation: " + this.deviation[0] + " " + this.deviation[1]);
     }
+
+    public double calculateG(Ufo ufo)
+    {
+        return Math.exp(-Math.pow(ufo.getCenter()[0] - this.center[0], 2) / (20 * Math.pow(this.getDeviation()[0], 2))) * Math.exp(-Math.pow(ufo.getCenter()[1] - this.center[1], 2) / (20 * Math.pow(this.getDeviation()[1], 2)));
+    }
+
+
 }

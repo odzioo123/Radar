@@ -21,14 +21,18 @@ public class Clasterer {
         List<List<int[]>> clusters = new ArrayList<>();
 
         for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
-                if (binaryBitmap[row][col] == 1 && !visited[row][col]) {
+            for (int col = 0; col < cols; col++)
+            {
+                if (binaryBitmap[row][col] == 1 && !visited[row][col])
+                {
                     List<int[]> cluster = new ArrayList<>();
                     dfs(binaryBitmap, row, col, visited, cluster);
                     clusters.add(cluster);
                 }
             }
         }
+
+        clusters.removeIf(cluster -> cluster.size() < 7);
 
         return clusters;
     }

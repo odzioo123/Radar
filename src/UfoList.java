@@ -14,7 +14,7 @@ public class UfoList {
             double[] deviation = new double[2];
             deviation[0] = getDeviationX(cluster, average[0]);
             deviation[1] = getDeviationY(cluster, average[1]);
-            Ufo ufo = new Ufo(cluster, average, deviation, time);
+            Ufo ufo = new Ufo(average, deviation, time);
             ufoList.add(ufo);
         }
     }

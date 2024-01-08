@@ -29,6 +29,7 @@ public class Parser {
         {
             e.printStackTrace();
         }
+
     }
 
     private static int[][] convertToBinaryBitmap(BufferedImage image) {
@@ -37,8 +38,10 @@ public class Parser {
 
         int[][] binaryBitmap = new int[height][width];
 
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
                 // Get the RGB value of the current pixel
                 int rgb = image.getRGB(x, y);
 
@@ -46,16 +49,18 @@ public class Parser {
                 int gray = (int) (0.299 * ((rgb >> 16) & 0xFF) + 0.587 * ((rgb >> 8) & 0xFF) + 0.114 * (rgb & 0xFF));
 
                 // Convert grayscale value to binary (thresholding)
-                binaryBitmap[y][x] = (gray < 128) ? 1 : 0;
+                binaryBitmap[y][x] = (gray < 128) ? 0 : 1;
             }
         }
-
         return binaryBitmap;
     }
 
-    public void printBinaryBitmap() {
-        for (int[] row : this.bitmap) {
-            for (int pixel : row) {
+    public void printBinaryBitmap()
+    {
+        for (int[] row : this.bitmap)
+        {
+            for (int pixel : row)
+            {
                 System.out.print(pixel + " ");
             }
             System.out.println();
@@ -75,10 +80,13 @@ public class Parser {
             Date date = formatter.parse(str_date);
             return new Timestamp(date.getTime());
 
-        } catch (ParseException e) {
+        } catch (ParseException e)
+        {
             System.out.println("Exception :" + e);
             return null;
         }
     }
+
+
 
 }
